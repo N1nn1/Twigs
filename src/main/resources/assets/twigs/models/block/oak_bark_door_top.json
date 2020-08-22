@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top",
+  "textures": {
+    "top": "twigs:block/oak_bark_door_top",
+    "bottom": "twigs:block/oak_bark_door_bottom"
+  }
+}

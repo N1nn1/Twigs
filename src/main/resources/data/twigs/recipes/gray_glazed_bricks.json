@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#B#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:bricks"
+        },
+        "B": {
+            "item": "minecraft:gray_dye"
+        }
+    },
+    "result": {
+        "item": "twigs:gray_glazed_bricks",
+        "count": 8
+    }
+}

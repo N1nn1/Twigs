@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+		    { "model": "twigs:block/boulder" },
+			{ "model": "twigs:block/boulder", "y": 90 },
+			{ "model": "twigs:block/boulder", "y": 180 },
+			{ "model": "twigs:block/boulder", "y": 270 }
+			]
+    }
+}

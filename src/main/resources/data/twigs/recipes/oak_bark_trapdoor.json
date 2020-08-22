@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "twigs:oak_bark_planks"
+        }
+    },
+    "result": {
+        "item": "twigs:oak_bark_trapdoor",
+        "count": 2
+    }
+}

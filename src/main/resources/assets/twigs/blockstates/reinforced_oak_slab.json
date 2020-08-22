@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "twigs:block/reinforced_oak_slab"
+    },
+    "type=double": {
+      "model": "twigs:block/reinforced_oak_planks"
+    },
+    "type=top": {
+      "model": "twigs:block/reinforced_oak_slab_top"
+    }
+  }
+}

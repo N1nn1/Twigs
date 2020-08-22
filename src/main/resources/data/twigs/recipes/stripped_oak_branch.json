@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " O ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:oak_planks"
+        },
+        "O": {
+            "item": "minecraft:stripped_oak_log"
+        }
+    },
+    "result": {
+        "item": "twigs:stripped_oak_branch",
+        "count": 2
+    }
+}

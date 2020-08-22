@@ -1,0 +1,140 @@
+{
+  "variants": {
+    "pickles=1,waterlogged=false": [
+      {
+        "model": "twigs:block/pebbles"
+      },
+      {
+        "model": "twigs:block/pebbles",
+        "y": 90
+      },
+      {
+        "model": "twigs:block/pebbles",
+        "y": 180
+      },
+      {
+        "model": "twigs:block/pebbles",
+        "y": 270
+      }
+    ],
+    "pickles=1,waterlogged=true": [
+      {
+        "model": "twigs:block/pebbles"
+      },
+      {
+        "model": "twigs:block/pebbles",
+        "y": 90
+      },
+      {
+        "model": "twigs:block/pebbles",
+        "y": 180
+      },
+      {
+        "model": "twigs:block/pebbles",
+        "y": 270
+      }
+    ],
+    "pickles=2,waterlogged=false": [
+      {
+        "model": "twigs:block/two_pebbles"
+      },
+      {
+        "model": "twigs:block/two_pebbles",
+        "y": 90
+      },
+      {
+        "model": "twigs:block/two_pebbles",
+        "y": 180
+      },
+      {
+        "model": "twigs:block/two_pebbles",
+        "y": 270
+      }
+    ],
+    "pickles=2,waterlogged=true": [
+      {
+        "model": "twigs:block/two_pebbles"
+      },
+      {
+        "model": "twigs:block/two_pebbles",
+        "y": 90
+      },
+      {
+        "model": "twigs:block/two_pebbles",
+        "y": 180
+      },
+      {
+        "model": "twigs:block/two_pebbles",
+        "y": 270
+      }
+    ],
+    "pickles=3,waterlogged=false": [
+      {
+        "model": "twigs:block/three_pebbles"
+      },
+      {
+        "model": "twigs:block/three_pebbles",
+        "y": 90
+      },
+      {
+        "model": "twigs:block/three_pebbles",
+        "y": 180
+      },
+      {
+        "model": "twigs:block/three_pebbles",
+        "y": 270
+      }
+    ],
+    "pickles=3,waterlogged=true": [
+      {
+        "model": "twigs:block/three_pebbles"
+      },
+      {
+        "model": "twigs:block/three_pebbles",
+        "y": 90
+      },
+      {
+        "model": "twigs:block/three_pebbles",
+        "y": 180
+      },
+      {
+        "model": "twigs:block/three_pebbles",
+        "y": 270
+      }
+    ],
+    "pickles=4,waterlogged=false": [
+      {
+        "model": "twigs:block/four_pebbles"
+      },
+      {
+        "model": "twigs:block/four_pebbles",
+        "y": 90
+      },
+      {
+        "model": "twigs:block/four_pebbles",
+        "y": 180
+      },
+      {
+        "model": "twigs:block/four_pebbles",
+        "y": 270
+      }
+    ],
+    "pickles=4,waterlogged=true": [
+      {
+        "model": "twigs:block/four_pebbles"
+      },
+      {
+        "model": "twigs:block/four_pebbles",
+        "y": 90
+      },
+      {
+        "model": "twigs:block/four_pebbles",
+        "y": 180
+      },
+      {
+        "model": "twigs:block/four_pebbles",
+        "y": 270
+      }
+    ]
+  }
+}

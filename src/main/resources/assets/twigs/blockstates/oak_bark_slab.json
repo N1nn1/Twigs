@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "twigs:block/oak_bark_slab"
+    },
+    "type=double": {
+      "model": "twigs:block/oak_bark_planks"
+    },
+    "type=top": {
+      "model": "twigs:block/oak_bark_slab_top"
+    }
+  }
+}

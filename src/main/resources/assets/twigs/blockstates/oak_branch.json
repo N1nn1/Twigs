@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "twigs:block/oak_branch",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "twigs:block/oak_branch"
+    },
+    "axis=z": {
+      "model": "twigs:block/oak_branch",
+      "x": 90
+    }
+  }
+}
