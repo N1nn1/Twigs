@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "twigs:block/carved_acacia_top",
+    "side": "twigs:block/carved_acacia"
+  }
+}

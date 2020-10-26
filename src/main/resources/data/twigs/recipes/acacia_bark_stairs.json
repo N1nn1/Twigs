@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "twigs:acacia_bark_planks"
+        }
+    },
+    "result": {
+        "item": "twigs:acacia_bark_stairs",
+        "count": 4
+    }
+}

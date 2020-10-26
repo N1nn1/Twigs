@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "twigs:block/crimson_stem_planks"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "twigs:block/chiseled_polished_andesite_bricks",
+    "bottom": "twigs:block/chiseled_polished_andesite_bricks_bottom",
+    "top": "twigs:block/chiseled_polished_andesite_bricks_top"
+  }
+}

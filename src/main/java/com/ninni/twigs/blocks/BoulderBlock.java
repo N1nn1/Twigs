@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 public class BoulderBlock extends BushBlock implements IWaterLoggable {
     public static final IntegerProperty BOULDER = BlockStateProperties.ROTATION_0_15;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    protected static final VoxelShape BOULDER_SHAPE = Block.makeCuboidShape(2, 0, 2, 13, 8, 13);
+    protected static final VoxelShape BOULDER_SHAPE = Block.makeCuboidShape(0.5, 0, 1, 15.5, 14, 15.75);
     public BoulderBlock(AbstractBlock.Properties properties) {
         super(properties);
         this.setDefaultState(this.stateContainer.getBaseState().with(BOULDER, Integer.valueOf(1)).with(WATERLOGGED, Boolean.valueOf(true)));

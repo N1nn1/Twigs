@@ -9,9 +9,9 @@ import java.util.function.Predicate;
 
 public class HarvestConfig {
 
+        public static ForgeConfigSpec.ConfigValue<List<? extends String>> sickle_block_breaking;
+
         public static void init(ForgeConfigSpec.Builder server, ForgeConfigSpec.Builder client)
         {
-            server.comment("World Generation Config");
-
-        }
+   }
     }

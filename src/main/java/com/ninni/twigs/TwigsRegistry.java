@@ -1,10 +1,12 @@
 package com.ninni.twigs;
 
 import com.ninni.twigs.blocks.BoulderBlock;
+import com.ninni.twigs.blocks.RockBlock;
 import com.ninni.twigs.blocks.BranchBlock;
 import com.ninni.twigs.blocks.PebblesBlock;
 import com.ninni.twigs.registry.*;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.container.ContainerType;
@@ -18,6 +20,7 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -40,18 +43,18 @@ public class TwigsRegistry {
         itemRegistryEvent.getRegistry().registerAll
                 (
 
-                        // True items:
+                        //items:
 
                         //Tools & Armour:
 
-                        // Item-blocks:
-
-                        //OAK
+                        //Block items:
 
                         //MISC OAK
                         ItemRegistry.carved_oak = new BlockItem(BlockRegistry.carved_oak, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.carved_oak.getRegistryName()),
                         ItemRegistry.oak_branch = new BlockItem(BlockRegistry.oak_branch, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.oak_branch.getRegistryName()),
                         ItemRegistry.stripped_oak_branch = new BlockItem(BlockRegistry.stripped_oak_branch, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.stripped_oak_branch.getRegistryName()),
+                        ItemRegistry.oak_beam = new BlockItem(BlockRegistry.oak_beam, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.oak_beam.getRegistryName()),
+                        ItemRegistry.stripped_oak_beam = new BlockItem(BlockRegistry.stripped_oak_beam, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.stripped_oak_beam.getRegistryName()),
 
                         //REINFORCED OAK SET
                         ItemRegistry.reinforced_oak_planks = new BlockItem(BlockRegistry.reinforced_oak_planks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.reinforced_oak_planks.getRegistryName()),
@@ -67,25 +70,80 @@ public class TwigsRegistry {
                         ItemRegistry.oak_bark_pressure_plate = new BlockItem(BlockRegistry.oak_bark_pressure_plate, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.oak_bark_pressure_plate.getRegistryName()),
                         ItemRegistry.oak_bark_button = new BlockItem(BlockRegistry.oak_bark_button, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.oak_bark_button.getRegistryName()),
 
-                        //GLAZED BRICKS
-                        ItemRegistry.black_glazed_bricks = new BlockItem(BlockRegistry.black_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.black_glazed_bricks.getRegistryName()),
-                        ItemRegistry.blue_glazed_bricks = new BlockItem(BlockRegistry.blue_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.blue_glazed_bricks.getRegistryName()),
-                        ItemRegistry.brown_glazed_bricks = new BlockItem(BlockRegistry.brown_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.brown_glazed_bricks.getRegistryName()),
-                        ItemRegistry.cyan_glazed_bricks = new BlockItem(BlockRegistry.cyan_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.cyan_glazed_bricks.getRegistryName()),
-                        ItemRegistry.gray_glazed_bricks = new BlockItem(BlockRegistry.gray_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.gray_glazed_bricks.getRegistryName()),
-                        ItemRegistry.green_glazed_bricks = new BlockItem(BlockRegistry.green_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.green_glazed_bricks.getRegistryName()),
-                        ItemRegistry.light_blue_glazed_bricks = new BlockItem(BlockRegistry.light_blue_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.light_blue_glazed_bricks.getRegistryName()),
-                        ItemRegistry.light_gray_glazed_bricks = new BlockItem(BlockRegistry.light_gray_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.light_gray_glazed_bricks.getRegistryName()),
-                        ItemRegistry.magenta_glazed_bricks = new BlockItem(BlockRegistry.magenta_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.magenta_glazed_bricks.getRegistryName()),
-                        ItemRegistry.orange_glazed_bricks = new BlockItem(BlockRegistry.orange_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.orange_glazed_bricks.getRegistryName()),
-                        ItemRegistry.pink_glazed_bricks = new BlockItem(BlockRegistry.pink_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.pink_glazed_bricks.getRegistryName()),
-                        ItemRegistry.purple_glazed_bricks = new BlockItem(BlockRegistry.purple_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.purple_glazed_bricks.getRegistryName()),
-                        ItemRegistry.red_glazed_bricks = new BlockItem(BlockRegistry.red_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.red_glazed_bricks.getRegistryName()),
-                        ItemRegistry.white_glazed_bricks = new BlockItem(BlockRegistry.white_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.white_glazed_bricks.getRegistryName()),
-                        ItemRegistry.yellow_glazed_bricks = new BlockItem(BlockRegistry.yellow_glazed_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.yellow_glazed_bricks.getRegistryName()),
+                        //DARK OAK BARK SET
+                        ItemRegistry.dark_oak_bark_planks = new BlockItem(BlockRegistry.dark_oak_bark_planks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.dark_oak_bark_planks.getRegistryName()),
+
+                        //BIRCH BARK SET
+                        ItemRegistry.birch_bark_planks = new BlockItem(BlockRegistry.birch_bark_planks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.birch_bark_planks.getRegistryName()),
+
+                        //MISC ACACIA
+                        ItemRegistry.carved_acacia = new BlockItem(BlockRegistry.carved_acacia, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.carved_acacia.getRegistryName()),
+                        ItemRegistry.acacia_branch = new BlockItem(BlockRegistry.acacia_branch, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.acacia_branch.getRegistryName()),
+                        ItemRegistry.stripped_acacia_branch = new BlockItem(BlockRegistry.stripped_acacia_branch, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.stripped_acacia_branch.getRegistryName()),
+                        ItemRegistry.acacia_beam = new BlockItem(BlockRegistry.acacia_beam, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.acacia_beam.getRegistryName()),
+                        ItemRegistry.stripped_acacia_beam = new BlockItem(BlockRegistry.stripped_acacia_beam, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.stripped_acacia_beam.getRegistryName()),
+
+                        //REINFORCED ACACIA SET
+                        ItemRegistry.reinforced_acacia_planks = new BlockItem(BlockRegistry.reinforced_acacia_planks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.reinforced_acacia_planks.getRegistryName()),
+                        ItemRegistry.reinforced_acacia_stairs = new BlockItem(BlockRegistry.reinforced_acacia_stairs, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.reinforced_acacia_stairs.getRegistryName()),
+                        ItemRegistry.reinforced_acacia_slab = new BlockItem(BlockRegistry.reinforced_acacia_slab, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.reinforced_acacia_slab.getRegistryName()),
+
+                        //ACACIA BARK SET
+                        ItemRegistry.acacia_bark_planks = new BlockItem(BlockRegistry.acacia_bark_planks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.acacia_bark_planks.getRegistryName()),
+                        ItemRegistry.acacia_bark_stairs = new BlockItem(BlockRegistry.acacia_bark_stairs, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.acacia_bark_stairs.getRegistryName()),
+                        ItemRegistry.acacia_bark_slab = new BlockItem(BlockRegistry.acacia_bark_slab, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.acacia_bark_slab.getRegistryName()),
+                        ItemRegistry.acacia_bark_trapdoor = new BlockItem(BlockRegistry.acacia_bark_trapdoor, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.acacia_bark_trapdoor.getRegistryName()),
+                        ItemRegistry.acacia_bark_door = new BlockItem(BlockRegistry.acacia_bark_door, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.acacia_bark_door.getRegistryName()),
+                        ItemRegistry.acacia_bark_pressure_plate = new BlockItem(BlockRegistry.acacia_bark_pressure_plate, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.acacia_bark_pressure_plate.getRegistryName()),
+                        ItemRegistry.acacia_bark_button = new BlockItem(BlockRegistry.acacia_bark_button, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.acacia_bark_button.getRegistryName()),
+
+                        //JUNGLE BARK SET
+                        ItemRegistry.jungle_bark_planks = new BlockItem(BlockRegistry.jungle_bark_planks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.jungle_bark_planks.getRegistryName()),
+
+                        //SPRUCE BARK SET
+                        ItemRegistry.spruce_bark_planks = new BlockItem(BlockRegistry.spruce_bark_planks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.spruce_bark_planks.getRegistryName()),
+
+                        //CRIMSON STEM SET
+                        ItemRegistry.crimson_stem_planks = new BlockItem(BlockRegistry.crimson_stem_planks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.crimson_stem_planks.getRegistryName()),
+
+                        //WARPED STEM SET
+                        ItemRegistry.warped_stem_planks = new BlockItem(BlockRegistry.warped_stem_planks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.warped_stem_planks.getRegistryName()),
+
+                        //STONES
+                        ItemRegistry.stone_brick_pillar = new BlockItem(BlockRegistry.stone_brick_pillar, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.stone_brick_pillar.getRegistryName()),
+                        ItemRegistry.mossy_stone_brick_pillar = new BlockItem(BlockRegistry.mossy_stone_brick_pillar, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.mossy_stone_brick_pillar.getRegistryName()),
+                        ItemRegistry.cracked_stone_brick_pillar = new BlockItem(BlockRegistry.cracked_stone_brick_pillar, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.cracked_stone_brick_pillar.getRegistryName()),
+                        ItemRegistry.stone_pillar = new BlockItem(BlockRegistry.stone_pillar, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.stone_pillar.getRegistryName()),
+
+                        //ANDESITE
+                        ItemRegistry.polished_andesite_bricks = new BlockItem(BlockRegistry.polished_andesite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.polished_andesite_bricks.getRegistryName()),
+                        ItemRegistry.cracked_polished_andesite_bricks = new BlockItem(BlockRegistry.cracked_polished_andesite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.cracked_polished_andesite_bricks.getRegistryName()),
+                        ItemRegistry.mossy_polished_andesite_bricks = new BlockItem(BlockRegistry.mossy_polished_andesite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.mossy_polished_andesite_bricks.getRegistryName()),
+                        ItemRegistry.chiseled_polished_andesite_bricks = new BlockItem(BlockRegistry.chiseled_polished_andesite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.chiseled_polished_andesite_bricks.getRegistryName()),
+                        ItemRegistry.polished_andesite_pillar = new BlockItem(BlockRegistry.polished_andesite_pillar, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.polished_andesite_pillar.getRegistryName()),
+                        ItemRegistry.polished_andesite_brick_slab = new BlockItem(BlockRegistry.polished_andesite_brick_slab, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.polished_andesite_brick_slab.getRegistryName()),
+                        ItemRegistry.polished_andesite_brick_stairs = new BlockItem(BlockRegistry.polished_andesite_brick_stairs, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.polished_andesite_brick_stairs.getRegistryName()),
+                        ItemRegistry.polished_andesite_brick_wall = new BlockItem(BlockRegistry.polished_andesite_brick_wall, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.polished_andesite_brick_wall.getRegistryName()),
+
+                        //DIORITE
+                        ItemRegistry.polished_diorite_bricks = new BlockItem(BlockRegistry.polished_diorite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.polished_diorite_bricks.getRegistryName()),
+                        ItemRegistry.cracked_polished_diorite_bricks = new BlockItem(BlockRegistry.cracked_polished_diorite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.cracked_polished_diorite_bricks.getRegistryName()),
+                        ItemRegistry.mossy_polished_diorite_bricks = new BlockItem(BlockRegistry.mossy_polished_diorite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.mossy_polished_diorite_bricks.getRegistryName()),
+                        ItemRegistry.chiseled_polished_diorite_bricks = new BlockItem(BlockRegistry.chiseled_polished_diorite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.chiseled_polished_diorite_bricks.getRegistryName()),
+                        ItemRegistry.polished_diorite_pillar = new BlockItem(BlockRegistry.polished_diorite_pillar, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.polished_diorite_pillar.getRegistryName()),
+
+                        //GRANITE
+                        ItemRegistry.polished_granite_bricks = new BlockItem(BlockRegistry.polished_granite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.polished_granite_bricks.getRegistryName()),
+                        ItemRegistry.cracked_polished_granite_bricks = new BlockItem(BlockRegistry.cracked_polished_granite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.cracked_polished_granite_bricks.getRegistryName()),
+                        ItemRegistry.mossy_polished_granite_bricks = new BlockItem(BlockRegistry.mossy_polished_granite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.mossy_polished_granite_bricks.getRegistryName()),
+                        ItemRegistry.chiseled_polished_granite_bricks = new BlockItem(BlockRegistry.chiseled_polished_granite_bricks, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.chiseled_polished_granite_bricks.getRegistryName()),
+                        ItemRegistry.polished_granite_pillar = new BlockItem(BlockRegistry.polished_granite_pillar, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.polished_granite_pillar.getRegistryName()),
+
+                        //BLACKSTONE
 
                         //ROCKS
                         ItemRegistry.pebbles = new BlockItem(BlockRegistry.pebbles, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.pebbles.getRegistryName()),
+                        ItemRegistry.rock = new BlockItem(BlockRegistry.rock, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.rock.getRegistryName()),
                         ItemRegistry.boulder = new BlockItem(BlockRegistry.boulder, new Item.Properties().group(TWIGS)).setRegistryName(BlockRegistry.boulder.getRegistryName())
 
                         );
@@ -106,9 +164,11 @@ public class TwigsRegistry {
                         BlockRegistry.carved_oak = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("carved_oak")),
                         BlockRegistry.oak_branch = new BranchBlock(Block.Properties.from(Blocks.OAK_LOG)).setRegistryName(location("oak_branch")),
                         BlockRegistry.stripped_oak_branch = new BranchBlock(Block.Properties.from(Blocks.OAK_LOG)).setRegistryName(location("stripped_oak_branch")),
+                        BlockRegistry.oak_beam = new RotatedPillarBlock(Block.Properties.from(Blocks.OAK_LOG)).setRegistryName(location("oak_beam")),
+                        BlockRegistry.stripped_oak_beam = new RotatedPillarBlock(Block.Properties.from(Blocks.STRIPPED_OAK_LOG)).setRegistryName(location("stripped_oak_beam")),
 
                         //REINFORCED OAK SET
-                        BlockRegistry.reinforced_oak_planks = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("reinforced_oak_planks")),
+                        BlockRegistry.reinforced_oak_planks = new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(4.0F, 10.0f).harvestTool(ToolType.AXE).sound(SoundType.WOOD)).setRegistryName(location("reinforced_oak_planks")),
                         BlockRegistry.reinforced_oak_stairs = new net.minecraft.block.StairsBlock(BlockRegistry.reinforced_oak_planks.getDefaultState(), StairsBlock.Properties.from(BlockRegistry.reinforced_oak_planks)).setRegistryName(location("reinforced_oak_stairs")),
                         BlockRegistry.reinforced_oak_slab = new SlabBlock(SlabBlock.Properties.from(BlockRegistry.reinforced_oak_planks)).setRegistryName(location("reinforced_oak_slab")),
 
@@ -116,31 +176,85 @@ public class TwigsRegistry {
                         BlockRegistry.oak_bark_planks = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("oak_bark_planks")),
                         BlockRegistry.oak_bark_stairs = new net.minecraft.block.StairsBlock(BlockRegistry.oak_bark_planks.getDefaultState(), StairsBlock.Properties.from(BlockRegistry.oak_bark_planks)).setRegistryName(location("oak_bark_stairs")),
                         BlockRegistry.oak_bark_slab = new SlabBlock(SlabBlock.Properties.from(BlockRegistry.oak_bark_planks)).setRegistryName(location("oak_bark_slab")),
-                        BlockRegistry.oak_bark_trapdoor = new net.minecraft.block.TrapDoorBlock(TrapDoorBlock.Properties.from(Blocks.ACACIA_TRAPDOOR)).setRegistryName(location("oak_bark_trapdoor")),
-                        BlockRegistry.oak_bark_door = new net.minecraft.block.DoorBlock(DoorBlock.Properties.from(Blocks.OAK_DOOR)).setRegistryName(location("oak_bark_door")),
-                        BlockRegistry.oak_bark_pressure_plate = new net.minecraft.block.PressurePlateBlock(net.minecraft.block.PressurePlateBlock.Sensitivity.EVERYTHING, PressurePlateBlock.Properties.from(Blocks.OAK_PRESSURE_PLATE)).setRegistryName(location("oak_bark_pressure_plate")),
-                        BlockRegistry.oak_bark_button = new net.minecraft.block.WoodButtonBlock(WoodButtonBlock.Properties.from(Blocks.OAK_BUTTON)).setRegistryName(location("oak_bark_button")),
+                        BlockRegistry.oak_bark_trapdoor = new com.ninni.twigs.blocks.TrapDoorBlock(TrapDoorBlock.Properties.create(Material.WOOD).hardnessAndResistance(3.0f).harvestTool(ToolType.AXE).notSolid().sound(SoundType.WOOD)).setRegistryName(location("oak_bark_trapdoor")),
+                        BlockRegistry.oak_bark_door = new com.ninni.twigs.blocks.DoorBlock(DoorBlock.Properties.create(Material.WOOD).hardnessAndResistance(3.0f, 5.0f).harvestTool(ToolType.AXE).notSolid().sound(SoundType.WOOD)).setRegistryName(location("oak_bark_door")),
+                        BlockRegistry.oak_bark_pressure_plate = new com.ninni.twigs.blocks.PressurePlateBlock(net.minecraft.block.PressurePlateBlock.Sensitivity.EVERYTHING, PressurePlateBlock.Properties.from(Blocks.OAK_PRESSURE_PLATE)).setRegistryName(location("oak_bark_pressure_plate")),
+                        BlockRegistry.oak_bark_button = new com.ninni.twigs.blocks.WoodButtonBlock(WoodButtonBlock.Properties.from(Blocks.OAK_BUTTON)).setRegistryName(location("oak_bark_button")),
 
-                        //GLAZED BRICKS
-                        BlockRegistry.black_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("black_glazed_bricks")),
-                        BlockRegistry.blue_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("blue_glazed_bricks")),
-                        BlockRegistry.brown_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("brown_glazed_bricks")),
-                        BlockRegistry.cyan_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("cyan_glazed_bricks")),
-                        BlockRegistry.gray_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("gray_glazed_bricks")),
-                        BlockRegistry.green_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("green_glazed_bricks")),
-                        BlockRegistry.light_blue_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("light_blue_glazed_bricks")),
-                        BlockRegistry.light_gray_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("light_gray_glazed_bricks")),
-                        BlockRegistry.lime_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("lime_glazed_bricks")),
-                        BlockRegistry.magenta_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("magenta_glazed_bricks")),
-                        BlockRegistry.orange_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("orange_glazed_bricks")),
-                        BlockRegistry.pink_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("pink_glazed_bricks")),
-                        BlockRegistry.purple_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("purple_glazed_bricks")),
-                        BlockRegistry.red_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("red_glazed_bricks")),
-                        BlockRegistry.white_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("white_glazed_bricks")),
-                        BlockRegistry.yellow_glazed_bricks = new Block(Block.Properties.from(Blocks.BRICKS)).setRegistryName(location("yellow_glazed_bricks")),
+                        //DARK OAK BARK SET
+                        BlockRegistry.dark_oak_bark_planks = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("dark_oak_bark_planks")),
+
+                        //BIRCH BARK SET
+                        BlockRegistry.birch_bark_planks = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("birch_bark_planks")),
+
+                        //MISC ACACIA
+                        BlockRegistry.carved_acacia = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("carved_acacia")),
+                        BlockRegistry.acacia_branch = new BranchBlock(Block.Properties.from(Blocks.OAK_LOG)).setRegistryName(location("acacia_branch")),
+                        BlockRegistry.stripped_acacia_branch = new BranchBlock(Block.Properties.from(Blocks.OAK_LOG)).setRegistryName(location("stripped_acacia_branch")),
+                        BlockRegistry.acacia_beam = new RotatedPillarBlock(Block.Properties.from(Blocks.OAK_LOG)).setRegistryName(location("acacia_beam")),
+                        BlockRegistry.stripped_acacia_beam = new RotatedPillarBlock(Block.Properties.from(Blocks.STRIPPED_OAK_LOG)).setRegistryName(location("stripped_acacia_beam")),
+
+                        //REINFORCED ACACIA SET
+                        BlockRegistry.reinforced_acacia_planks = new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(4.0F, 10.0f).harvestTool(ToolType.AXE).sound(SoundType.WOOD)).setRegistryName(location("reinforced_acacia_planks")),
+                        BlockRegistry.reinforced_acacia_stairs = new net.minecraft.block.StairsBlock(BlockRegistry.reinforced_acacia_planks.getDefaultState(), StairsBlock.Properties.from(BlockRegistry.reinforced_acacia_planks)).setRegistryName(location("reinforced_acacia_stairs")),
+                        BlockRegistry.reinforced_acacia_slab = new SlabBlock(SlabBlock.Properties.from(BlockRegistry.reinforced_acacia_planks)).setRegistryName(location("reinforced_acacia_slab")),
+
+                        //ACACIA BARK SET
+                        BlockRegistry.acacia_bark_planks = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("acacia_bark_planks")),
+                        BlockRegistry.acacia_bark_stairs = new net.minecraft.block.StairsBlock(BlockRegistry.acacia_bark_planks.getDefaultState(), StairsBlock.Properties.from(BlockRegistry.acacia_bark_planks)).setRegistryName(location("acacia_bark_stairs")),
+                        BlockRegistry.acacia_bark_slab = new SlabBlock(SlabBlock.Properties.from(BlockRegistry.acacia_bark_planks)).setRegistryName(location("acacia_bark_slab")),
+                        BlockRegistry.acacia_bark_trapdoor = new com.ninni.twigs.blocks.TrapDoorBlock(TrapDoorBlock.Properties.create(Material.WOOD).hardnessAndResistance(3.0f).harvestTool(ToolType.AXE).notSolid().sound(SoundType.WOOD)).setRegistryName(location("acacia_bark_trapdoor")),
+                        BlockRegistry.acacia_bark_door = new com.ninni.twigs.blocks.DoorBlock(DoorBlock.Properties.create(Material.WOOD).hardnessAndResistance(3.0f, 5.0f).harvestTool(ToolType.AXE).notSolid().sound(SoundType.WOOD)).setRegistryName(location("acacia_bark_door")),
+                        BlockRegistry.acacia_bark_pressure_plate = new com.ninni.twigs.blocks.PressurePlateBlock(net.minecraft.block.PressurePlateBlock.Sensitivity.EVERYTHING, PressurePlateBlock.Properties.from(Blocks.OAK_PRESSURE_PLATE)).setRegistryName(location("acacia_bark_pressure_plate")),
+                        BlockRegistry.acacia_bark_button = new com.ninni.twigs.blocks.WoodButtonBlock(WoodButtonBlock.Properties.from(Blocks.OAK_BUTTON)).setRegistryName(location("acacia_bark_button")),
+
+                        //JUNGLE BARK SET
+                        BlockRegistry.jungle_bark_planks = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("jungle_bark_planks")),
+
+                        //SPRUCE BARK SET
+                        BlockRegistry.spruce_bark_planks = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("spruce_bark_planks")),
+
+                        //CRIMSON STEM SET
+                        BlockRegistry.crimson_stem_planks = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("crimson_stem_planks")),
+
+                        //WARPED STEM SET
+                        BlockRegistry.warped_stem_planks = new Block(Block.Properties.from(Blocks.OAK_PLANKS)).setRegistryName(location("warped_stem_planks")),
+
+                        //STONES
+                        BlockRegistry.stone_brick_pillar = new RotatedPillarBlock(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("stone_brick_pillar")),
+                        BlockRegistry.mossy_stone_brick_pillar = new RotatedPillarBlock(Block.Properties.from(Blocks.MOSSY_STONE_BRICKS)).setRegistryName(location("mossy_stone_brick_pillar")),
+                        BlockRegistry.cracked_stone_brick_pillar = new RotatedPillarBlock(Block.Properties.from(Blocks.CRACKED_STONE_BRICKS)).setRegistryName(location("cracked_stone_brick_pillar")),
+                        BlockRegistry.stone_pillar = new RotatedPillarBlock(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("stone_pillar")),
+
+                        //ANDESITE
+                        BlockRegistry.polished_andesite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("polished_andesite_bricks")),
+                        BlockRegistry.cracked_polished_andesite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("cracked_polished_andesite_bricks")),
+                        BlockRegistry.mossy_polished_andesite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("mossy_polished_andesite_bricks")),
+                        BlockRegistry.chiseled_polished_andesite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("chiseled_polished_andesite_bricks")),
+                        BlockRegistry.polished_andesite_pillar = new RotatedPillarBlock(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("polished_andesite_pillar")),
+                        BlockRegistry.polished_andesite_brick_slab = new SlabBlock(SlabBlock.Properties.from(BlockRegistry.polished_andesite_bricks)).setRegistryName(location("polished_andesite_brick_slab")),
+                        BlockRegistry.polished_andesite_brick_stairs = new net.minecraft.block.StairsBlock(BlockRegistry.polished_andesite_bricks.getDefaultState(), StairsBlock.Properties.from(BlockRegistry.polished_andesite_bricks)).setRegistryName(location("polished_andesite_brick_stairs")),
+                        BlockRegistry.polished_andesite_brick_wall = new WallBlock(Block.Properties.from(Blocks.STONE_BRICK_WALL)).setRegistryName(location("polished_andesite_brick_wall")),
+
+                        //DIORITE
+                        BlockRegistry.polished_diorite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("polished_diorite_bricks")),
+                        BlockRegistry.cracked_polished_diorite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("cracked_polished_diorite_bricks")),
+                        BlockRegistry.mossy_polished_diorite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("mossy_polished_diorite_bricks")),
+                        BlockRegistry.chiseled_polished_diorite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("chiseled_polished_diorite_bricks")),
+                        BlockRegistry.polished_diorite_pillar = new RotatedPillarBlock(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("polished_diorite_pillar")),
+
+                        //GRANITE
+                        BlockRegistry.polished_granite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("polished_granite_bricks")),
+                        BlockRegistry.cracked_polished_granite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("cracked_polished_granite_bricks")),
+                        BlockRegistry.mossy_polished_granite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("mossy_polished_granite_bricks")),
+                        BlockRegistry.chiseled_polished_granite_bricks = new Block(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("chiseled_polished_granite_bricks")),
+                        BlockRegistry.polished_granite_pillar = new RotatedPillarBlock(Block.Properties.from(Blocks.STONE_BRICKS)).setRegistryName(location("polished_granite_pillar")),
+
+                        //BLACKSTONE
 
                         //ROCKS
                         BlockRegistry.pebbles = new PebblesBlock(Block.Properties.from(Blocks.COBBLESTONE)).setRegistryName(location("pebbles")),
+                        BlockRegistry.rock = new RockBlock(Block.Properties.from(Blocks.COBBLESTONE)).setRegistryName(location("rock")),
                         BlockRegistry.boulder = new BoulderBlock(Block.Properties.from(Blocks.COBBLESTONE)).setRegistryName(location("boulder"))
 
                         );

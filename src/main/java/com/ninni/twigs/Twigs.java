@@ -1,6 +1,5 @@
 package com.ninni.twigs;
 
-import com.ninni.twigs.config.Configuration;
 import com.ninni.twigs.events.EventHandler;
 import com.ninni.twigs.network.PacketHandler;
 import com.ninni.twigs.registry.*;
@@ -8,18 +7,14 @@ import com.ninni.twigs.world.OreGeneration;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod("twigs")
+@Mod("gluttony")
 public class Twigs {
     public static final String MOD_ID = "twigs";
     public static Twigs INSTANCE;
@@ -38,7 +33,6 @@ public class Twigs {
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         RenderRegistry.registryRenders();
-        // RenderHandler.registerColors();
         LOGGER.info("Client registry method registered.");
     }
 

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#O#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:acacia_log"
+        },
+        "O": {
+            "item": "minecraft:acacia_planks"
+        }
+    },
+    "result": {
+        "item": "twigs:acacia_bark_planks",
+        "count": 14
+    }
+}

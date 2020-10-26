@@ -1,17 +1,19 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "   ",
-        " # ",
-        " # "
+        "#",
+        "C"
     ],
     "key": {
         "#": {
+            "item": "twigs:pebbles"
+        },
+        "C": {
             "item": "minecraft:cobblestone"
         }
     },
     "result": {
         "item": "twigs:boulder",
-        "count": 2
+        "count": 1
     }
 }

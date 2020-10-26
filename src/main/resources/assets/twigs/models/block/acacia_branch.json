@@ -1,0 +1,7 @@
+{
+  "parent": "twigs:block/branch",
+  "textures": {
+    "particle": "#all",
+    "all": "twigs:block/acacia_branch"
+  }
+}

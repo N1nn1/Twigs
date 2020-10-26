@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "_",
+        "_"
+    ],
+    "key": {
+        "_": {
+            "item": "minecraft:polished_diorite_slab"
+        }
+    },
+    "result": {
+        "item": "twigs:chiseled_diorite_bricks",
+        "count": 1
+    }
+}
