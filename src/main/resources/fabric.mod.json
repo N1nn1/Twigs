@@ -1,0 +1,34 @@
+{
+    "schemaVersion": 1,
+    "license": "MIT",
+    "id": "twigs",
+    "version": "${version}",
+
+    "name": "Twigs",
+    "description": "Description",
+    "icon": "pack.png",
+
+    "authors": [
+        "Ninni",
+        "Andante"
+    ],
+    "contributors": [],
+    "contact": {
+        "sources": "https://github.com/N1nn1/twigs"
+    },
+
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "me.ninni.twigs.Twigs"
+        ],
+        "client": [],
+        "server": []
+    },
+    "mixins": [],
+    "depends": {
+        "fabricloader": ">=0.9.3",
+        "fabric": "*",
+        "minecraft": ">=1.16.2"
+    }
+}
